@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springmvc.dao.busiPayInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springmvc.bean.busiPayInfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CUST_NO" property="custNo" jdbcType="VARCHAR" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_LIMIT_NO" property="productLimitNo" jdbcType="VARCHAR" />
+    <result column="PRODUCT_CODE" property="productCode" jdbcType="VARCHAR" />
+    <result column="BUSI_AMT" property="busiAmt" jdbcType="DECIMAL" />
+    <result column="REPAY_METHOD" property="repayMethod" jdbcType="VARCHAR" />
+    <result column="TERM" property="term" jdbcType="INTEGER" />
+    <result column="TERM_OPT_CODE" property="termOptCode" jdbcType="VARCHAR" />
+    <result column="TERM_UNIT" property="termUnit" jdbcType="VARCHAR" />
+    <result column="PAY_ACCOUNT" property="payAccount" jdbcType="VARCHAR" />
+    <result column="PAY_ACCOUNT_TYPE" property="payAccountType" jdbcType="VARCHAR" />
+    <result column="PAY_ACC_NAME" property="payAccName" jdbcType="VARCHAR" />
+    <result column="PAYEE_INNER_CARD_FLAG" property="payeeInnerCardFlag" jdbcType="VARCHAR" />
+    <result column="PAYEE_ACCT_TH_NBR" property="payeeAcctThNbr" jdbcType="VARCHAR" />
+    <result column="PAYEE_ACCT_TH_NAME" property="payeeAcctThName" jdbcType="VARCHAR" />
+    <result column="BANK_NAME" property="bankName" jdbcType="VARCHAR" />
+    <result column="BANK_CODE" property="bankCode" jdbcType="VARCHAR" />
+    <result column="ELCT_ACCTNO" property="elctAcctno" jdbcType="VARCHAR" />
+    <result column="PURPOSE" property="purpose" jdbcType="VARCHAR" />
+    <result column="LOAN_RATE" property="loanRate" jdbcType="DECIMAL" />
+    <result column="APPROVE_STATUS" property="approveStatus" jdbcType="VARCHAR" />
+    <result column="IF_APPROVE" property="ifApprove" jdbcType="VARCHAR" />
+    <result column="PAY_DATE" property="payDate" jdbcType="VARCHAR" />
+    <result column="APPLY_DATE" property="applyDate" jdbcType="VARCHAR" />
+    <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CUST_NO, CUST_NAME, PRODUCT_LIMIT_NO, PRODUCT_CODE, BUSI_AMT, REPAY_METHOD, TERM, 
+    TERM_OPT_CODE, TERM_UNIT, PAY_ACCOUNT, PAY_ACCOUNT_TYPE, PAY_ACC_NAME, PAYEE_INNER_CARD_FLAG, 
+    PAYEE_ACCT_TH_NBR, PAYEE_ACCT_TH_NAME, BANK_NAME, BANK_CODE, ELCT_ACCTNO, PURPOSE, 
+    LOAN_RATE, APPROVE_STATUS, IF_APPROVE, PAY_DATE, APPLY_DATE, LAST_UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xd_busi_pay_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xd_busi_pay_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.bean.busiPayInfo" >
+    insert into xd_busi_pay_info (ID, CUST_NO, CUST_NAME, 
+      PRODUCT_LIMIT_NO, PRODUCT_CODE, BUSI_AMT, 
+      REPAY_METHOD, TERM, TERM_OPT_CODE, 
+      TERM_UNIT, PAY_ACCOUNT, PAY_ACCOUNT_TYPE, 
+      PAY_ACC_NAME, PAYEE_INNER_CARD_FLAG, PAYEE_ACCT_TH_NBR, 
+      PAYEE_ACCT_TH_NAME, BANK_NAME, BANK_CODE, 
+      ELCT_ACCTNO, PURPOSE, LOAN_RATE, 
+      APPROVE_STATUS, IF_APPROVE, PAY_DATE, 
+      APPLY_DATE, LAST_UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{custNo,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, 
+      #{productLimitNo,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, #{busiAmt,jdbcType=DECIMAL}, 
+      #{repayMethod,jdbcType=VARCHAR}, #{term,jdbcType=INTEGER}, #{termOptCode,jdbcType=VARCHAR}, 
+      #{termUnit,jdbcType=VARCHAR}, #{payAccount,jdbcType=VARCHAR}, #{payAccountType,jdbcType=VARCHAR}, 
+      #{payAccName,jdbcType=VARCHAR}, #{payeeInnerCardFlag,jdbcType=VARCHAR}, #{payeeAcctThNbr,jdbcType=VARCHAR}, 
+      #{payeeAcctThName,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, 
+      #{elctAcctno,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR}, #{loanRate,jdbcType=DECIMAL}, 
+      #{approveStatus,jdbcType=VARCHAR}, #{ifApprove,jdbcType=VARCHAR}, #{payDate,jdbcType=VARCHAR}, 
+      #{applyDate,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.bean.busiPayInfo" >
+    insert into xd_busi_pay_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="custNo != null" >
+        CUST_NO,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="productLimitNo != null" >
+        PRODUCT_LIMIT_NO,
+      </if>
+      <if test="productCode != null" >
+        PRODUCT_CODE,
+      </if>
+      <if test="busiAmt != null" >
+        BUSI_AMT,
+      </if>
+      <if test="repayMethod != null" >
+        REPAY_METHOD,
+      </if>
+      <if test="term != null" >
+        TERM,
+      </if>
+      <if test="termOptCode != null" >
+        TERM_OPT_CODE,
+      </if>
+      <if test="termUnit != null" >
+        TERM_UNIT,
+      </if>
+      <if test="payAccount != null" >
+        PAY_ACCOUNT,
+      </if>
+      <if test="payAccountType != null" >
+        PAY_ACCOUNT_TYPE,
+      </if>
+      <if test="payAccName != null" >
+        PAY_ACC_NAME,
+      </if>
+      <if test="payeeInnerCardFlag != null" >
+        PAYEE_INNER_CARD_FLAG,
+      </if>
+      <if test="payeeAcctThNbr != null" >
+        PAYEE_ACCT_TH_NBR,
+      </if>
+      <if test="payeeAcctThName != null" >
+        PAYEE_ACCT_TH_NAME,
+      </if>
+      <if test="bankName != null" >
+        BANK_NAME,
+      </if>
+      <if test="bankCode != null" >
+        BANK_CODE,
+      </if>
+      <if test="elctAcctno != null" >
+        ELCT_ACCTNO,
+      </if>
+      <if test="purpose != null" >
+        PURPOSE,
+      </if>
+      <if test="loanRate != null" >
+        LOAN_RATE,
+      </if>
+      <if test="approveStatus != null" >
+        APPROVE_STATUS,
+      </if>
+      <if test="ifApprove != null" >
+        IF_APPROVE,
+      </if>
+      <if test="payDate != null" >
+        PAY_DATE,
+      </if>
+      <if test="applyDate != null" >
+        APPLY_DATE,
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="custNo != null" >
+        #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="productLimitNo != null" >
+        #{productLimitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null" >
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="busiAmt != null" >
+        #{busiAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="repayMethod != null" >
+        #{repayMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        #{term,jdbcType=INTEGER},
+      </if>
+      <if test="termOptCode != null" >
+        #{termOptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="termUnit != null" >
+        #{termUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null" >
+        #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccountType != null" >
+        #{payAccountType,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccName != null" >
+        #{payAccName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeInnerCardFlag != null" >
+        #{payeeInnerCardFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAcctThNbr != null" >
+        #{payeeAcctThNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAcctThName != null" >
+        #{payeeAcctThName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="elctAcctno != null" >
+        #{elctAcctno,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null" >
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="loanRate != null" >
+        #{loanRate,jdbcType=DECIMAL},
+      </if>
+      <if test="approveStatus != null" >
+        #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ifApprove != null" >
+        #{ifApprove,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        #{applyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.bean.busiPayInfo" >
+    update xd_busi_pay_info
+    <set >
+      <if test="custNo != null" >
+        CUST_NO = #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        CUST_NAME = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="productLimitNo != null" >
+        PRODUCT_LIMIT_NO = #{productLimitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null" >
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="busiAmt != null" >
+        BUSI_AMT = #{busiAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="repayMethod != null" >
+        REPAY_METHOD = #{repayMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        TERM = #{term,jdbcType=INTEGER},
+      </if>
+      <if test="termOptCode != null" >
+        TERM_OPT_CODE = #{termOptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="termUnit != null" >
+        TERM_UNIT = #{termUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null" >
+        PAY_ACCOUNT = #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccountType != null" >
+        PAY_ACCOUNT_TYPE = #{payAccountType,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccName != null" >
+        PAY_ACC_NAME = #{payAccName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeInnerCardFlag != null" >
+        PAYEE_INNER_CARD_FLAG = #{payeeInnerCardFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAcctThNbr != null" >
+        PAYEE_ACCT_TH_NBR = #{payeeAcctThNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAcctThName != null" >
+        PAYEE_ACCT_TH_NAME = #{payeeAcctThName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="elctAcctno != null" >
+        ELCT_ACCTNO = #{elctAcctno,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null" >
+        PURPOSE = #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="loanRate != null" >
+        LOAN_RATE = #{loanRate,jdbcType=DECIMAL},
+      </if>
+      <if test="approveStatus != null" >
+        APPROVE_STATUS = #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ifApprove != null" >
+        IF_APPROVE = #{ifApprove,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null" >
+        PAY_DATE = #{payDate,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        APPLY_DATE = #{applyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.bean.busiPayInfo" >
+    update xd_busi_pay_info
+    set CUST_NO = #{custNo,jdbcType=VARCHAR},
+      CUST_NAME = #{custName,jdbcType=VARCHAR},
+      PRODUCT_LIMIT_NO = #{productLimitNo,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      BUSI_AMT = #{busiAmt,jdbcType=DECIMAL},
+      REPAY_METHOD = #{repayMethod,jdbcType=VARCHAR},
+      TERM = #{term,jdbcType=INTEGER},
+      TERM_OPT_CODE = #{termOptCode,jdbcType=VARCHAR},
+      TERM_UNIT = #{termUnit,jdbcType=VARCHAR},
+      PAY_ACCOUNT = #{payAccount,jdbcType=VARCHAR},
+      PAY_ACCOUNT_TYPE = #{payAccountType,jdbcType=VARCHAR},
+      PAY_ACC_NAME = #{payAccName,jdbcType=VARCHAR},
+      PAYEE_INNER_CARD_FLAG = #{payeeInnerCardFlag,jdbcType=VARCHAR},
+      PAYEE_ACCT_TH_NBR = #{payeeAcctThNbr,jdbcType=VARCHAR},
+      PAYEE_ACCT_TH_NAME = #{payeeAcctThName,jdbcType=VARCHAR},
+      BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      ELCT_ACCTNO = #{elctAcctno,jdbcType=VARCHAR},
+      PURPOSE = #{purpose,jdbcType=VARCHAR},
+      LOAN_RATE = #{loanRate,jdbcType=DECIMAL},
+      APPROVE_STATUS = #{approveStatus,jdbcType=VARCHAR},
+      IF_APPROVE = #{ifApprove,jdbcType=VARCHAR},
+      PAY_DATE = #{payDate,jdbcType=VARCHAR},
+      APPLY_DATE = #{applyDate,jdbcType=VARCHAR},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
